@@ -1,68 +1,98 @@
-var margin = {top: 20, right: 20, bottom: 70, left: 40},
-    width = 600 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+var barChartP1 = dc.barChart('#bar-chart-p1');
+var barChartP2 = dc.barChart('#bar-chart-p2');
+d3.json("projeto1.json", function(error, data){
+  var newData = [];
+  for(var i = 0; i < data.length; i++){
+    var obj1 = {
+      value: data[i].tempoExecucaoAutomatica,
+      type: "auto"
+    }
+    newData.push(obj1);
+ 
+    var obj2 = {
+      value: data[i].tempoExecucaoManual,
+      type: "manual"
+    }
+    newData.push(obj2);
+  }
 
-// Parse the date / time
-var	parseDate = d3.time.format("%Y-%m").parse;
+  var facts = crossfilter(newData);
 
-var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+  var typeDim = facts.dimension(function(d){
+    return d.type;
+  });
 
-var y = d3.scale.linear().range([height, 0]);
+  var valueTotal = typeDim.group().reduceSum(function(d){
+    return d.value/3600;
+  });
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .tickFormat(d3.time.format("%Y-%m"));
+  barChartP1.width(400)
+           .height(400)
+           .margins({top: 30, right: 50, bottom: 25, left: 40})
+           .dimension(typeDim)
+           .x(d3.scale.ordinal())
+           .xUnits(dc.units.ordinal)
+           .yAxisLabel('Minutos')
+           .barPadding(0.1)
+           .outerPadding(0.05)
+           .brushOn(false)
+           .group(valueTotal)
+           .colors(d3.scale.ordinal().domain(["positive","negative"])
+                                .range(["darkorange","steelblue"]))
+           .colorAccessor(function(d) { 
+            if(d.value > 1.5) 
+                return "positive"
+            return "negative";});
 
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10);
+  dc.renderAll();
+});
 
-var svg = d3.select("#bar-chart").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", 
-          "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("bar-data-example.csv", function(error, data) {
 
-    data.forEach(function(d) {
-        d.date = parseDate(d.date);
-        d.value = +d.value;
-    });
-	
-  x.domain(data.map(function(d) { return d.date; }));
-  y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
-    .selectAll("text")
-      .style("text-anchor", "end")
-      .attr("dx", "-.8em")
-      .attr("dy", "-.55em")
-      .attr("transform", "rotate(-90)" );
+d3.json("projeto2.json", function(error, data){
+  var newData = [];
+  for(var i = 0; i < data.length; i++){
+    var obj1 = {
+      value: data[i].tempoExecucaoAutomatica,
+      type: "auto"
+    }
+    newData.push(obj1);
+ 
+    var obj2 = {
+      value: data[i].tempoExecucaoManual,
+      type: "manual"
+    }
+    newData.push(obj2);
+  }
 
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Value ($)");
+  var facts = crossfilter(newData);
 
-  svg.selectAll("bar")
-      .data(data)
-    .enter().append("rect")
-      .style("fill", "steelblue")
-      .attr("x", function(d) { return x(d.date); })
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.value); })
-      .attr("height", function(d) { return height - y(d.value); });
+  var typeDim = facts.dimension(function(d){
+    return d.type;
+  });
 
+  var valueTotal = typeDim.group().reduceSum(function(d){
+    return d.value/3600;
+  });
+
+  barChartP2.width(400)
+           .height(400)
+           .margins({top: 30, right: 50, bottom: 25, left: 40})
+           .dimension(typeDim)
+           .x(d3.scale.ordinal())
+           .xUnits(dc.units.ordinal)
+           .yAxisLabel('Horas')
+           .barPadding(0.1)
+           .outerPadding(0.05)
+           .brushOn(false)
+           .group(valueTotal)
+            .colors(d3.scale.ordinal().domain(["positive","negative"])
+                                .range(["darkorange","steelblue"]))
+           .colorAccessor(function(d) { 
+            if(d.value > 30) 
+                return "positive"
+            return "negative";});;
+
+  dc.renderAll();
 });

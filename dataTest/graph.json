@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {"id": "Projeto1", "group": 1},
+    {"id": "Bruno", "group": 1},
+    {"id": "Émerson", "group": 1},
+    {"id": "Nayana", "group": 1},
+
+    {"id": "Projeto2", "group": 2},
+    {"id": "Aluno1", "group": 2},
+    {"id": "Aluno2", "group": 2},
+    {"id": "Aluno3", "group": 2},
+
+    {"id": "Projeto3", "group": 3},
+    {"id": "Aluno4", "group": 3},
+    {"id": "Aluno5", "group": 3},
+
+
+    {"id": "Projeto4", "group": 4},
+    {"id": "Aluno6", "group": 4},
+    {"id": "Aluno7", "group": 4},
+    {"id": "Aluno8", "group": 4},
+
+    {"id": "Visualização", "group": 5}
+
+
+
+  ],
+
+  "links": [
+    {"source": "Bruno", "target": "Projeto1", "value": 4},
+    {"source": "Nayana", "target": "Projeto1", "value": 1},
+    {"source": "Émerson", "target": "Projeto1", "value": 3},
+    {"source": "Projeto1", "target": "Visualização", "value": 1},
+
+    {"source": "Aluno1", "target": "Projeto2", "value": 1},
+    {"source": "Aluno2", "target": "Projeto2", "value": 1},
+    {"source": "Aluno3", "target": "Projeto2", "value": 1},
+    {"source": "Projeto2", "target": "Visualização", "value": 1},
+
+    {"source": "Aluno4", "target": "Projeto3", "value": 7},
+    {"source": "Aluno5", "target": "Projeto3", "value": 1},
+    {"source": "Projeto3", "target": "Visualização", "value": 1},
+
+    {"source": "Aluno6", "target": "Projeto4", "value": 1},
+    {"source": "Aluno7", "target": "Projeto4", "value": 6},
+    {"source": "Aluno8", "target": "Projeto4", "value": 1},
+    {"source": "Projeto4", "target": "Visualização", "value": 1}
+
+  ]
+}

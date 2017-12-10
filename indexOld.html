@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ##################SITE EXAMPLES############################## -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -12,7 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/test.css" rel="stylesheet">
-    
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="css/dc.css">
     <script src="js/crossfilter.js" charset="utf-8"></script>
@@ -27,7 +28,54 @@
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
       integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
       crossorigin=""></script>
+    <style media="screen">
 
+    .node {
+      font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+      fill: #bbb;
+    }
+
+    .node:hover {
+      fill: #000;
+    }
+
+    .link {
+      stroke: steelblue;
+      stroke-opacity: 0.4;
+      fill: none;
+      pointer-events: none;
+    }
+
+    .node:hover,
+    .node--source,
+    .node--target {
+      font-weight: 700;
+    }
+
+    .node--source {
+      fill: #2ca02c;
+    }
+
+    .node--target {
+      fill: #d62728;
+    }
+
+    .link--source,
+    .link--target {
+      stroke-opacity: 1;
+      stroke-width: 2px;
+    }
+
+    .link--source {
+      stroke: #d62728;
+    }
+
+    .link--target {
+      stroke: #2ca02c;
+    }
+
+
+    </style>
     </head>
 
   <body>
@@ -43,7 +91,7 @@
               </li>
             </ul>
           </nav>
-          
+
 
         </header>
         <main role="main">
@@ -53,14 +101,14 @@
             <div class="container">
               <h1 class="display-3">Nome do Trabalho!</h1>
               <p>Explicação do trabalho.</p>
-            
+
             </div>
           </div>
 
-          
+
             <!-- Example row of columns -->
           <!-- Vis 1 -->
-          <div class="row justify-content-center">  
+          <div class="row justify-content-center">
             <div class="col-9">
               <h1 class="text-center">Tempo de execução Auto X Manual</h1>
               <div id="bar-chart-p1"></div>
@@ -69,61 +117,61 @@
           </div>
 
           <!-- Vis 2 -->
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
-              
+
             </div>
             <div class="col" >
               <h1 class="text-center">Manual vs Automação</h1>
               <div id="line-chart"></div>
             </div>
             <div class="col" >
-              
+
             </div>
           </div>
 
           <!-- Vis 3 -->
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
-              
+
             </div>
             <div class="col" >
               <h1>Nome vis 3</h1>
-              
+
             </div>
             <div class="col" >
-              
+
             </div>
           </div>
-           
+
            <!-- Vis 4 -->
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
-              
+
             </div>
             <div class="col" >
               <h1>Nome vis 4</h1>
-              
+
             </div>
             <div class="col" >
-              
+
             </div>
           </div>
 
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
-              
+
             </div>
             <div class="col" >
               <h1>Nome vis 5</h1>
-              
+              <svg width="1280" height="1280"></svg>
             </div>
             <div class="col" >
-              
+
             </div>
           </div>
 
-          </div> 
+          </div>
         </main>
       </div><!-- /container -->
 
@@ -141,7 +189,129 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="js/scriptTest.js"></script>
-    <script type="text/javascript" src="js/scriptLineChart.js"></script>
+    <!-- <script type="text/javascript" src="js/scriptTest.js"></script>
+    <script type="text/javascript" src="js/scriptLineChart.js"></script> -->
+    <!-- <script src="js/d3.min.js"></script> -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script>
+    var diameter = 960,
+        radius = diameter / 2,
+        innerRadius = radius - 120;
+
+    var cluster = d3.cluster()
+        .size([360, innerRadius]);
+
+    var line = d3.radialLine()
+        .curve(d3.curveBundle.beta(0.85))
+        .radius(function(d) { return d.y; })
+        .angle(function(d) { return d.x / 180 * Math.PI; });
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", diameter)
+        .attr("height", diameter)
+      .append("g")
+        .attr("transform", "translate(" + radius + "," + radius + ")");
+
+    var link = svg.append("g").selectAll(".link"),
+        node = svg.append("g").selectAll(".node");
+
+    d3.json("dataTest/flare.json", function(error, classes) {
+      if (error) throw error;
+
+      var root = packageHierarchy(classes)
+          .sum(function(d) { return d.size; });
+
+      cluster(root);
+
+      link = link
+        .data(packageImports(root.leaves()))
+        .enter().append("path")
+          .each(function(d) { d.source = d[0], d.target = d[d.length - 1]; })
+          .attr("class", "link")
+          .attr("d", line);
+
+      node = node
+        .data(root.leaves())
+        .enter().append("text")
+          .attr("class", "node")
+          .attr("dy", "0.31em")
+          .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + (d.y + 8) + ",0)" + (d.x < 180 ? "" : "rotate(180)"); })
+          .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+          .text(function(d) { return d.data.key; })
+          .on("mouseover", mouseovered)
+          .on("mouseout", mouseouted);
+    });
+
+    function mouseovered(d) {
+      node
+          .each(function(n) { n.target = n.source = false; });
+
+      link
+          .classed("link--target", function(l) { if (l.target === d) return l.source.source = true; })
+          .classed("link--source", function(l) { if (l.source === d) return l.target.target = true; })
+        .filter(function(l) { return l.target === d || l.source === d; })
+          .raise();
+
+      node
+          .classed("node--target", function(n) { return n.target; })
+          .classed("node--source", function(n) { return n.source; });
+    }
+
+    function mouseouted(d) {
+      link
+          .classed("link--target", false)
+          .classed("link--source", false);
+
+      node
+          .classed("node--target", false)
+          .classed("node--source", false);
+    }
+
+    // Lazily construct the package hierarchy from class names.
+    function packageHierarchy(classes) {
+      var map = {};
+
+      function find(name, data) {
+        var node = map[name], i;
+        if (!node) {
+          node = map[name] = data || {name: name, children: []};
+          if (name.length) {
+            node.parent = find(name.substring(0, i = name.lastIndexOf(".")));
+            node.parent.children.push(node);
+            node.key = name.substring(i + 1);
+          }
+        }
+        return node;
+      }
+
+      classes.forEach(function(d) {
+        find(d.name, d);
+      });
+
+      return d3.hierarchy(map[""]);
+    }
+
+    // Return a list of imports for the given array of nodes.
+    function packageImports(nodes) {
+      var map = {},
+          imports = [];
+
+      // Compute a map from name to node.
+      nodes.forEach(function(d) {
+        map[d.data.name] = d;
+      });
+
+      // For each import, construct a link from the source to target node.
+      nodes.forEach(function(d) {
+        if (d.data.imports) d.data.imports.forEach(function(i) {
+          imports.push(map[d.data.name].path(map[i]));
+        });
+      });
+
+      return imports;
+    }
+
+
+    </script>
   </body>
 </html>

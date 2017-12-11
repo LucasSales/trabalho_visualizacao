@@ -4,7 +4,7 @@ packagesChart = dc.rowChart("#pacotesProblematicos");
 errosChart    = dc.pieChart("#pacotesProblematicosErros");
 falhasChart   = dc.pieChart("#pacotesProblematicosFalhas");
 
-d3.json("ProjectZ.json", function (error, data) {
+d3.json("data/ProjectZ.json", function (error, data) {
 
   data.packages.forEach(function(x) {
           x.tests = +x.tests;

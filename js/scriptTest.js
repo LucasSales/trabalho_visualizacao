@@ -97,10 +97,10 @@
 //   dc.renderAll();
 // });
 
-
-
-d3.json("ProjectZ.json", function(error, data){
-  console.log(data);
+var teste = dc.rowChart("#pacotesProblematicos");
+d3.json("data/ProjectZ.json", function(error, data){
+  
 });
+
 
 

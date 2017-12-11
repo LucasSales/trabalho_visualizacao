@@ -1,8 +1,8 @@
 
 //var timeChart = dc.compositeChart("#pacotesProblematicos");
-packagesChart = dc.rowChart("#pacotesProblematicos");
-errosChart    = dc.pieChart("#pacotesProblematicosErros");
-falhasChart   = dc.pieChart("#pacotesProblematicosFalhas");
+var packagesChart = dc.rowChart("#pacotesProblematicos");
+var errosChart    = dc.pieChart("#pacotesProblematicosErros");
+var falhasChart   = dc.pieChart("#pacotesProblematicosFalhas");
 
 d3.json("data/ProjectZ.json", function (error, data) {
 
@@ -29,7 +29,7 @@ d3.json("data/ProjectZ.json", function (error, data) {
   var packGroup = valuesDimension.group();
 
   packGroup.top(Infinity).forEach(function(p, i) {
-    console.log(p.key + ": " + p.value);
+    // console.log(p.key + ": " + p.value);
   });
 
   var quantizeColors = d3.scale.quantize()
@@ -45,7 +45,7 @@ d3.json("data/ProjectZ.json", function (error, data) {
         .colors(d3.scale.category10())
         .elasticX(true);
 
-  packagesChart.render();
+  // packagesChart.render();
 
   errosChart
         .width(768)
@@ -63,7 +63,7 @@ d3.json("data/ProjectZ.json", function (error, data) {
             return dc.utils.printSingleValue(d.data.value) + ' errors'
           })});
 
-  errosChart.render();
+  // errosChart.render();
 
   falhasChart
         .width(768)
@@ -81,7 +81,7 @@ d3.json("data/ProjectZ.json", function (error, data) {
             return dc.utils.printSingleValue(d.data.value) + ' failures'
           })});
 
-  falhasChart.render();
+  dc.renderAll();
 
 
 });

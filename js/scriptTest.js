@@ -52,10 +52,14 @@ d3.json("data/dataP.json", function(error, data){
            .height(400)
            .margins({top: 30, right: 50, bottom: 25, left: 40})
            .dimension(packageDim)
-           .x(d3.scale.ordinal())
+           .x(d3.scale.ordinal()
+              .domain(["P. One", "P. One - M", "P. Two", "P. Two - M", "P. Three",
+               "P. Three - M", "P. Four", "P. Four - M", "P. Five", "P. Five - M", 
+               "P. Six", "P. Six - M", "P. Seven", "P. Seven - M", "P. Eight", 
+               "P. Eight - M", "P. Nine", "P. Nine - M", "P. Ten", "P. Ten - M" ])
+              .range([0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]))
            .xUnits(dc.units.ordinal)
            .yAxisLabel('time')
-           .ordering(function(d){ return d.value })
            .barPadding(0.1)
            .outerPadding(0.05)
            .brushOn(false)

@@ -3,10 +3,23 @@
 var packagesChart = dc.rowChart("#pacotesProblematicos");
 var errosChart    = dc.pieChart("#pacotesProblematicosErros");
 var falhasChart   = dc.pieChart("#pacotesProblematicosFalhas");
+var packagesChartM = dc.rowChart("#pacotesProblematicosManual");
+var falhasChartM   = dc.pieChart("#pacotesProblematicosFalhasManual");
+d3.json("data/ProjectZA.json", function (error, data) {
 
-d3.json("data/dataP.json", function (error, data) {
+  var facts = crossfilter(data[0].packages);
+  var factsmanual = crossfilter(data[1].packages);
 
-  var facts = crossfilter(data);
+  var packageDimensionM = factsmanual.dimension(function(d){return d.name});
+  var errorDimensionM  = factsmanual.dimension(function(d){return d.errors});
+  var testPerNameM = packageDimensionM.group().reduceSum(function(d) {
+          return +d.tests;
+  });
+  var errorPerTestM = errorDimensionM.group().reduceSum(function(d) {
+          return +d.errors;
+      });
+  var failDimensionM  = factsmanual.dimension(function(d){return d.failures});
+  var failPerTestM = failDimensionM.group().reduceSum(function(d) {return +d.failures;});
 
   var packageDimension = facts.dimension(function(d){return d.name}),
       testDimension  = facts.dimension(function(d){return d.tests}),
@@ -21,7 +34,7 @@ d3.json("data/dataP.json", function (error, data) {
       }),
       errorPerName = packageDimension.group().reduceSum(function(d) {return +d.errors;}),
       testPerName = packageDimension.group().reduceSum(function(d) {
-        if(d.type == "Automatic")
+        // if(d.type == "Automatic")
           return +d.tests;
       }),
       failPerName = packageDimension.group().reduceSum(function(d) {return +d.failures;}),
@@ -38,18 +51,19 @@ d3.json("data/dataP.json", function (error, data) {
     .range(colorbrewer.Greens[9]);
 
   var color = d3.scale.linear().domain([0,100]).range(["red","blue"]);
-
+// #1f77b4
   packagesChart
-        .width(450).height(200)
+        .width(800).height(400)
         .dimension(packageDimension)
         .group(testPerName)
         .colors(d3.scale.category10())
-        .elasticX(true);
+        .elasticX(true)
+        .ordinalColors(["#1f77b4"]);
 
-  // packagesChart.render();
+  packagesChart.render();
 
   errosChart
-        .width(768)
+        .width(600)
           .height(480)
           .slicesCap(4)
           .innerRadius(100)
@@ -64,10 +78,13 @@ d3.json("data/dataP.json", function (error, data) {
             return dc.utils.printSingleValue(d.data.value) + ' errors'
           })});
 
-  // errosChart.render();
+  errosChart.render();
+
+
+  
 
   falhasChart
-        .width(768)
+        .width(600)
           .height(480)
           .slicesCap(4)
           .innerRadius(100)
@@ -81,8 +98,55 @@ d3.json("data/dataP.json", function (error, data) {
             chart.selectAll('text.pie-slice').text(function(d) {
             return dc.utils.printSingleValue(d.data.value) + ' failures'
           })});
+  falhasChart.render();
 
-  dc.renderAll();
+  packagesChartM
+      .width(800).height(400)
+      .dimension(packageDimensionM)
+      .group(testPerNameM)
+      .colors(d3.scale.category10())
+      .elasticX(true)
+      .ordinalColors(["#1f77b4"]);
+
+  packagesChartM.render();
+
+
+
+  falhasChartM
+      .width(600)
+        .height(480)
+        .slicesCap(4)
+        .innerRadius(100)
+        .externalLabels(30)
+        .externalRadiusPadding(50)
+        .drawPaths(true)
+        .legend(dc.legend())
+        .dimension(failDimensionM)
+        .group(failPerTestM)
+        .on('pretransition', function(chart) {
+          chart.selectAll('text.pie-slice').text(function(d) {
+          return dc.utils.printSingleValue(d.data.value) + ' failures'
+        })});
+  falhasChartM.render();
+
+  // errosChartM
+  //     .width(600)
+  //       .height(480)
+  //       .slicesCap(4)
+  //       .innerRadius(100)
+  //       .externalLabels(50)
+  //       .externalRadiusPadding(50)
+  //       .drawPaths(true)
+  //       .dimension(errorDimensionM)
+  //       .group(errorPerTestM)
+  //       .legend(dc.legend())
+  //       .on('pretransition', function(chart) {
+  //         chart.selectAll('text.pie-slice').text(function(d) {
+  //         return dc.utils.printSingleValue(d.data.value) + ' errors'
+  //       })});
+  // errosChartM.render();  
+  
+  // dc.renderAll();
 
 
 });

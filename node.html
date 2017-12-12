@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Visualização</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/nodeChart.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/dc.css">
+    <script src="js/crossfilter.js" charset="utf-8"></script>
+    <!-- <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/dc.js" charset="utf-8"></script>
+    <script src="https://d3js.org/colorbrewer.v1.min.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+      integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+      crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+      integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+      crossorigin=""></script>
+
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation -->
+<!--     <a class="menu-toggle rounded" href="#">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper" style="background: #666869">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a class="js-scroll-trigger" href="#page-top">Bem Vindo!</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="index.html">Início</a>
+        </li>
+      </ul>
+    </nav> -->
+
+    <!-- Header -->
+    <header>
+      <div class="container text-center">
+        <div class="row">
+
+          <div class="col-lg-12" id="bar-chart-p1">
+            <h2 >Acoplamento do código</h2>
+            <svg width="600" height="500"></svg>
+          </div>
+          <div class="col-lg-12" id="bar-chart-p1">
+             <a href="index.html" class="btn btn-md btn-dark">Voltar</a>
+          </div>
+         
+        </div>
+      </div>
+    </header>
+
+<!--     <footer class="footer text-center">
+      <div class="container">
+        <ul class="list-inline mb-5">
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="#">
+              <i class="icon-social-facebook"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="#">
+              <i class="icon-social-twitter"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white" href="#">
+              <i class="icon-social-github"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="text-muted small mb-0">Copyright &copy; Your Website 2017</p>
+      </div>
+    </footer> -->
+
+
+
+     <!-- Portfolio -->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Services -->
+<!--     <section class="content-section bg-light" id="services">
+      <div class="container">
+        <div class="content-section-heading">
+          <h3 class="text-secondary mb-0">Services</h3>
+          <h2 class="mb-5">What We Offer</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-screen-smartphone"></i>
+            </span>
+            <h4>
+              <strong>Responsive</strong>
+            </h4>
+            <p class="text-faded mb-0">Looks great on any screen size!</p>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-pencil"></i>
+            </span>
+            <h4>
+              <strong>Redesigned</strong>
+            </h4>
+            <p class="text-faded mb-0">Freshly redesigned for Bootstrap 4.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-like"></i>
+            </span>
+            <h4>
+              <strong>Favorited</strong>
+            </h4>
+            <p class="text-faded mb-0">Millions of users
+              <i class="fa fa-heart"></i>
+              Start Bootstrap!</p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-mustache"></i>
+            </span>
+            <h4>
+              <strong>Question</strong>
+            </h4>
+            <p class="text-faded mb-0">I mustache you a question...</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Callout -->
+<!--     <section class="content-section text-center" id="vis1">
+
+    </section>
+    
+
+   
+
+    <!-- Call to Action -->
+<!--     <section class="content-section bg-primary text-white">
+      <div class="container text-center">
+        <h2 class="mb-4">The buttons below are impossible to resist...</h2>
+        <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
+        <a href="#" class="btn btn-xl btn-dark">Look at Me!</a>
+      </div>
+    </section> -->
+
+    <!-- Map -->
+<!--     <section id="contact" class="map">
+      <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+      <br/>
+      <small>
+        <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
+      </small>
+    </section> -->
+
+    <!-- Footer -->
+
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/stylish-portfolio.min.js"></script>
+    <script type="text/javascript" src = "js/nodeChart.js"></script>
+    <!-- <script type="text/javascript" src="js/manualChart.js"></script> -->
+  </body>
+
+</html>

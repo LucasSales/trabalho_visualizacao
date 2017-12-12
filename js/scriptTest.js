@@ -44,12 +44,13 @@ d3.json("data/dataP.json", function(error, data){
 
 
   barChartP1.width(400)
-           .height(200)
-           .margins({top: 30, right: 50, bottom: 25, left: 40})
+           .height(300)
+           .margins({top: 30, right: 50, bottom: 35, left: 40})
            .dimension(typeDim)
            .x(d3.scale.ordinal())
            .xUnits(dc.units.ordinal)
-           .yAxisLabel('Horas')
+           .yAxisLabel("Horas")
+           .xAxisLabel("Tipo de Teste")
            .barPadding(0.1)
            .outerPadding(0.05)
            .brushOn(false)
@@ -63,8 +64,8 @@ d3.json("data/dataP.json", function(error, data){
                        return "negative";});
         
   barChartP2.width(1200)
-           .height(200)
-           .margins({top: 30, right: 50, bottom: 25, left: 40})
+           .height(300)
+           .margins({top: 30, right: 50, bottom: 35, left: 40})
            .dimension(packageDim)
            .x(d3.scale.ordinal()
               .domain(["P. One", "P. One - M", "P. Two", "P. Two - M", "P. Three",
@@ -73,7 +74,8 @@ d3.json("data/dataP.json", function(error, data){
                "P. Eight - M", "P. Nine", "P. Nine - M", "P. Ten", "P. Ten - M" ])
               .range([0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]))
            .xUnits(dc.units.ordinal)
-           .yAxisLabel('time')
+           .yAxisLabel("Horas")
+           .xAxisLabel("Pacotes")
            .barPadding(0.1)
            .outerPadding(0.05)
            .brushOn(false)
@@ -95,12 +97,18 @@ d3.json("data/dataP.json", function(error, data){
     .margins({top: 30, right: 50, bottom: 40, left: 40})
     .x(d3.scale.linear().domain([0, 100]))
     .brushOn(false)
-    .symbolSize(8)
+    .symbolSize(15)
     .clipPadding(10)
     .yAxisLabel("Número de Falhas")
     .xAxisLabel("Número de Casos de Teste")   
     .dimension(scatterDim)
-    .group(failuresPerPackage);
+    .group(failuresPerPackage)
+    .colors(d3.scale.ordinal().domain(["positive","negative"])
+                                    .range(["darkorange","steelblue"]))
+    .colorAccessor(function(d) {
+                       if(d.value != 50 && d.value != 4)
+                           return "negative"
+                       return "positive";});
   //  chart.render();
 
   dc.renderAll();

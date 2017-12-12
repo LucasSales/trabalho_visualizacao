@@ -4,9 +4,9 @@ var packagesChart = dc.rowChart("#pacotesProblematicos");
 var errosChart    = dc.pieChart("#pacotesProblematicosErros");
 var falhasChart   = dc.pieChart("#pacotesProblematicosFalhas");
 
-d3.json("data/ProjectZ.json", function (error, data) {
+d3.json("data/dataP.json", function (error, data) {
 
-  var facts = crossfilter(data.automatic);
+  var facts = crossfilter(data);
 
   var packageDimension = facts.dimension(function(d){return d.name}),
       testDimension  = facts.dimension(function(d){return d.tests}),
@@ -16,9 +16,14 @@ d3.json("data/ProjectZ.json", function (error, data) {
         return [d.name, d.tests, d.failures, d.errors]
       }),
       failPerTest = failDimension.group().reduceSum(function(d) {return +d.failures;}),
-      errorPerTest = errorDimension.group().reduceSum(function(d) {return +d.errors;}),
+      errorPerTest = errorDimension.group().reduceSum(function(d) {
+          return +d.errors;
+      }),
       errorPerName = packageDimension.group().reduceSum(function(d) {return +d.errors;}),
-      testPerName = packageDimension.group().reduceSum(function(d) {return +d.tests;}),
+      testPerName = packageDimension.group().reduceSum(function(d) {
+        if(d.type == "Automatic")
+          return +d.tests;
+      }),
       failPerName = packageDimension.group().reduceSum(function(d) {return +d.failures;}),
       errosHist    = errorDimension.group().reduceCount();
 

@@ -36,12 +36,8 @@ d3.json("data/dataP.json", function(error, data){
 
   var failuresPerPackage = scatterDim.group().reduceSum(function(d,i){
     if(d.type == "Automatic"){
-      console.log("AutTest: " + d.tests);
-      console.log("Aut: " + d.failures);
       return +d.failures;
     }
-    console.log("ManuTest: " + d.tests);
-    console.log("Manu: " + d.failures);
     return +d.failures;
   });
 

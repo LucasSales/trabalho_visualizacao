@@ -4617,7 +4617,7 @@
 		   "ignored": "0",
 		   "testsuite": {
 			  "name": "Manual Testing Package Two",
-			  "time": "",
+			  "time": "48",
 			  "testsuite": {
 				 "name": "Test Class One - Manual",
 				 "time": "48",

@@ -1,5 +1,6 @@
 var barChartP1 = dc.barChart('#bar-chart-p1');
 var barChartP2 = dc.barChart('#bar-chart-p2');
+var chart = dc.scatterPlot("#scatterplot");
 d3.json("data/dataP.json", function(error, data){
   var facts = crossfilter(data);
   
@@ -25,6 +26,23 @@ d3.json("data/dataP.json", function(error, data){
       return +d.testsuite.time/(60*60);
     }
     return +d.testsuite.time/60;
+  });
+
+  
+  var scatterDim = facts.dimension(function(d,i){
+    return [+d.tests, +d.failures];
+  });
+
+
+  var failuresPerPackage = scatterDim.group().reduceSum(function(d,i){
+    if(d.type == "Automatic"){
+      console.log("AutTest: " + d.tests);
+      console.log("Aut: " + d.failures);
+      return +d.failures;
+    }
+    console.log("ManuTest: " + d.tests);
+    console.log("Manu: " + d.failures);
+    return +d.failures;
   });
 
 
@@ -72,6 +90,22 @@ d3.json("data/dataP.json", function(error, data){
                        else if(d.value == 0.8)
                         return "positive"
                        return "negative";});
+
+
+  //scatterplot 
+  chart
+    .width(768)
+    .height(480)
+    .margins({top: 30, right: 50, bottom: 40, left: 40})
+    .x(d3.scale.linear().domain([0, 100]))
+    .brushOn(false)
+    .symbolSize(8)
+    .clipPadding(10)
+    .yAxisLabel("Número de Falhas")
+    .xAxisLabel("Número de Casos de Teste")   
+    .dimension(scatterDim)
+    .group(failuresPerPackage);
+  //  chart.render();
 
   dc.renderAll();
 });

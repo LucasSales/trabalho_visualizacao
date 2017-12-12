@@ -3,7 +3,7 @@
 var timeChart = dc.compositeChart("#manualTester");
 var timeChartFailed = dc.compositeChart("#manualTesterFailed");
 
-d3.json("data.json", function (error, data) {
+d3.json("data/data.json", function (error, data) {
 
   var execDateFormat = d3.time.format.utc("%Y-%m-%dT");
 

@@ -1,7 +1,7 @@
 var lineChart = dc.compositeChart('#line-chart');
 
 d3.json("projeto1.json", function (error, data) {
-	
+
 	var facts = crossfilter(data);
 
 	var caseTestIdDim = facts.dimension(function(d){

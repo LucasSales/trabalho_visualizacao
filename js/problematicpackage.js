@@ -1,16 +1,12 @@
 
 //var timeChart = dc.compositeChart("#pacotesProblematicos");
-packagesChart = dc.rowChart("#pacotesProblematicos");
-errosChart    = dc.pieChart("#pacotesProblematicosErros");
-falhasChart   = dc.pieChart("#pacotesProblematicosFalhas");
+var packagesChart = dc.rowChart("#pacotesProblematicos");
+var errosChart    = dc.pieChart("#pacotesProblematicosErros");
+var falhasChart   = dc.pieChart("#pacotesProblematicosFalhas");
 
-d3.json("data/ProjectZ.json", function (error, data) {
+d3.json("data/dataP.json", function (error, data) {
 
-  data.packages.forEach(function(x) {
-          x.tests = +x.tests;
-  });
-  
-  var facts = crossfilter(data.packages);
+  var facts = crossfilter(data);
 
   var packageDimension = facts.dimension(function(d){return d.name}),
       testDimension  = facts.dimension(function(d){return d.tests}),
@@ -20,16 +16,21 @@ d3.json("data/ProjectZ.json", function (error, data) {
         return [d.name, d.tests, d.failures, d.errors]
       }),
       failPerTest = failDimension.group().reduceSum(function(d) {return +d.failures;}),
-      errorPerTest = errorDimension.group().reduceSum(function(d) {return +d.errors;}),
+      errorPerTest = errorDimension.group().reduceSum(function(d) {
+          return +d.errors;
+      }),
       errorPerName = packageDimension.group().reduceSum(function(d) {return +d.errors;}),
-      testPerName = packageDimension.group().reduceSum(function(d) {return +d.tests;}),
+      testPerName = packageDimension.group().reduceSum(function(d) {
+        if(d.type == "Automatic")
+          return +d.tests;
+      }),
       failPerName = packageDimension.group().reduceSum(function(d) {return +d.failures;}),
       errosHist    = errorDimension.group().reduceCount();
 
   var packGroup = valuesDimension.group();
 
   packGroup.top(Infinity).forEach(function(p, i) {
-    console.log(p.key + ": " + p.value);
+    // console.log(p.key + ": " + p.value);
   });
 
   var quantizeColors = d3.scale.quantize()
@@ -41,11 +42,11 @@ d3.json("data/ProjectZ.json", function (error, data) {
   packagesChart
         .width(450).height(200)
         .dimension(packageDimension)
-        .group(testPerName)  
+        .group(testPerName)
         .colors(d3.scale.category10())
         .elasticX(true);
 
-  packagesChart.render();
+  // packagesChart.render();
 
   errosChart
         .width(768)
@@ -57,13 +58,13 @@ d3.json("data/ProjectZ.json", function (error, data) {
           .drawPaths(true)
           .dimension(errorDimension)
           .group(errorPerTest)
-          .legend(dc.legend())          
+          .legend(dc.legend())
           .on('pretransition', function(chart) {
             chart.selectAll('text.pie-slice').text(function(d) {
             return dc.utils.printSingleValue(d.data.value) + ' errors'
           })});
 
-  errosChart.render();
+  // errosChart.render();
 
   falhasChart
         .width(768)
@@ -71,7 +72,7 @@ d3.json("data/ProjectZ.json", function (error, data) {
           .slicesCap(4)
           .innerRadius(100)
           .externalLabels(30)
-          .externalRadiusPadding(50)          
+          .externalRadiusPadding(50)
           .drawPaths(true)
           .legend(dc.legend())
           .dimension(failDimension)
@@ -81,7 +82,7 @@ d3.json("data/ProjectZ.json", function (error, data) {
             return dc.utils.printSingleValue(d.data.value) + ' failures'
           })});
 
-  falhasChart.render();
+  dc.renderAll();
 
 
 });

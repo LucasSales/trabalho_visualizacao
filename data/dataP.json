@@ -5,7 +5,7 @@
             "project":"Project Z",
             "tests":"66",
             "started":"66",
-            "failures":"0",
+            "failures":0,
             "errors":"14",
             "ignored":"0",
             "testsuite":{
@@ -430,7 +430,7 @@
             "project":"Project Z",
             "tests":"24",
             "started":"24",
-            "failures":"0",
+            "failures":0,
             "errors":"10",
             "ignored":"0",
             "testsuite":{
@@ -580,7 +580,7 @@
             "type":"Automatic",
             "tests":"59",
             "started":"59",
-            "failures":"10",
+            "failures":10,
             "errors":"1",
             "ignored":"0",
             "testsuite":{
@@ -935,7 +935,7 @@
             "project":"Project Z",
             "tests":"41",
             "started":"41",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -1190,7 +1190,7 @@
             "project":"Project Z",
             "tests":"89",
             "started":"89",
-            "failures":"49",
+            "failures":49,
             "errors":"13",
             "ignored":"0",
             "testsuite":{
@@ -1755,7 +1755,7 @@
             "project":"Project Z",
             "tests":"71",
             "started":"71",
-            "failures":"0",
+            "failures":0,
             "errors":"2",
             "ignored":"0",
             "testsuite":{
@@ -2164,7 +2164,7 @@
             "project":"Project Z",
             "tests":"85",
             "started":"85",
-            "failures":"23",
+            "failures":23,
             "errors":"3",
             "ignored":"0",
             "testsuite":{
@@ -2667,7 +2667,7 @@
             "project":"Project Z",
             "tests":"91",
             "started":"91",
-            "failures":"7",
+            "failures":7,
             "errors":"17",
             "ignored":"0",
             "testsuite":{
@@ -3242,7 +3242,7 @@
             "project":"Project Z",
             "tests":"60",
             "started":"60",
-            "failures":"5",
+            "failures":5,
             "errors":"18",
             "ignored":"0",
             "testsuite":{
@@ -3617,7 +3617,7 @@
             "project":"Project Z",
             "tests":"36",
             "started":"36",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -3843,7 +3843,7 @@
             "project":"Project Z",
             "tests":"75",
             "started":"75",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -4606,7 +4606,7 @@
             "project":"Project Z",
             "tests":"24",
             "started":"24",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -4842,7 +4842,7 @@
             "project":"Project Z",
             "tests":"59",
             "started":"59",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -5413,7 +5413,7 @@
             "project":"Project Z",
             "tests":"41",
             "started":"41",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -5832,7 +5832,7 @@
             "project":"Project Z",
             "tests":"67",
             "started":"67",
-            "failures":"50",
+            "failures":50,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -6487,7 +6487,7 @@
             "project":"Project Z",
             "tests":"71",
             "started":"71",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -7178,7 +7178,7 @@
             "project":"Project Z",
             "tests":"85",
             "started":"85",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -7995,7 +7995,7 @@
             "project":"Project Z",
             "tests":"100",
             "started":"100",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -8971,7 +8971,7 @@
             "project":"Project Z",
             "tests":"60",
             "started":"60",
-            "failures":"4",
+            "failures":4,
             "errors":"0",
             "ignored":"0",
             "testsuite":{
@@ -9554,7 +9554,7 @@
             "project":"Project Z",
             "tests":"36",
             "started":"36",
-            "failures":"0",
+            "failures":0,
             "errors":"0",
             "ignored":"0",
             "testsuite":{

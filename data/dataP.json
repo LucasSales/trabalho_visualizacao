@@ -4612,7 +4612,8 @@
             "testsuite":{
                "name":"M Testing P. Two",
                "time":"48",
-               "testsuite":{
+               "testsuite":[
+               {
                   "name":"Test Class One - M",
                   "time":"48",
                   "testcase":[
@@ -4834,7 +4835,8 @@
                      }
                   ]
                }
-            }
+            ]}
+
          },
          {
             "name":"P. Three - M",

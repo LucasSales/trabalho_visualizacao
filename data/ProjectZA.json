@@ -1,10 +1,10 @@
 [
   {
    "project": "Project Z",
-   "qtdTests": "622",
+   "qtdTests": 622,
    "started": "622",
-   "failures": "94",
-   "errors": "78",
+   "failures": 94,
+   "errors": 78,
    "ignored": "0",
    "totalTime": "18183.916",
    "type":"automatic",

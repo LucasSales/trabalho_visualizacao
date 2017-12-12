@@ -1,12 +1,14 @@
-{
+[
+  {
    "project": "Project Z",
-   "automaticTests": "622",
-   "automaticStarted": "622",
-   "automaticFailures": "94",
-   "automaticErrors": "78",
-   "automaticIgnored": "0",
-   "automaticTotalTime": "18183,916",
-   "automatic":[
+   "qtdTests": "622",
+   "started": "622",
+   "failures": "94",
+   "errors": "78",
+   "ignored": "0",
+   "totalTime": "18183.916",
+   "type":"automatic",
+   "packages":[
 		{
 		   "name": "Package One",
 		   "project": "Project Z",
@@ -1918,7 +1920,7 @@
 					   {
 						  "name": "test_3210",
 						  "classname": "Test Class Three",
-						  "time": "25.337"    
+						  "time": "25.337"
 					   },
 					   {
 						  "name": "test_3211",
@@ -3831,14 +3833,18 @@
 			  ]
 		   }
 		}
-    ],
-	"manualTests": "618",
-    "manualStarted": "618",
-    "manualFailures": "54",
-    "manualErrors": "0",
-    "manualIgnored": "0",
-    "manualTotalTime": "1087",
-	"manual": [
+    ]
+},
+{
+  "project": "Project Z",
+  "qtdTests": "618",
+    "started": "618",
+    "failures": "54",
+    "errors": "0",
+    "ignored": "0",
+    "totalTime": "1087",
+    "type":"manual",
+	"packages": [
 		{
 		   "name":"Package One - Manual",
 		   "project":"Project Z",
@@ -9912,3 +9918,4 @@
 		}
 	]
 }
+]

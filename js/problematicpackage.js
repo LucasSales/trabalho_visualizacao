@@ -4,13 +4,8 @@ var packagesChart = dc.rowChart("#pacotesProblematicos");
 var errosChart    = dc.pieChart("#pacotesProblematicosErros");
 var falhasChart   = dc.pieChart("#pacotesProblematicosFalhas");
 
-d3.json("data/ProjectZV.json", function (error, data) {
+d3.json("data/ProjectZ.json", function (error, data) {
 
-  // data.forEach(function(x) {
-  //         x.tests = +x.tests;
-  //
-  // });
-  console.log(data);
   var facts = crossfilter(data.automatic);
 
   var packageDimension = facts.dimension(function(d){return d.name}),

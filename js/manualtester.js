@@ -10,6 +10,8 @@ d3.json("data/data.json", function (error, data) {
   data.forEach(function(d){
       d.executionDate = execDateFormat.parse(d.executionDate.substr(0,11));;
   });
+
+  //Fatos para a visualização de todos os testes
   
   var factsM = crossfilter(data);
   var factsJ = crossfilter(data);
@@ -41,6 +43,8 @@ d3.json("data/data.json", function (error, data) {
   var mariaGroup = dateDimension.group();
   var juliaGroup = dateJDimension.group();
 
+  //----------------------------------------------------------------------------------------------
+
 
   mariaGroup.top(Infinity).forEach(function(p, i) {
     console.log(p.key + ": " + p.value);
@@ -54,7 +58,7 @@ d3.json("data/data.json", function (error, data) {
    timeChart.width(800)
      .height(400)
      .margins({top: 50, right: 50, bottom: 25, left: 40})
-     .dimension(dateDimension, dateJDimension)
+     .dimension(dateDimension)
      .x(d3.time.scale().domain([new Date(2017,10,25,21,0,0), new Date(2017,10,29,21,0,0)]))
      .xUnits(d3.time.days)
      .renderHorizontalGridLines(true)
@@ -70,15 +74,45 @@ d3.json("data/data.json", function (error, data) {
 
   timeChart.render();
 
-  testerDimension.filterExact("Maria");
-  statusDimension.filterExact("failed");
-  testerJDimension.filterExact("Julia");
-  statusJDimension.filterExact("failed");
+  // Fatos para a visualização apenas dos testes que falharam !!
+  // tive que repetir por que quando é chamado o dc.renderALL em algum outro script, altera a visualização anterior.
+
+  var facts2M = crossfilter(data);
+  var facts2J = crossfilter(data);
+
+  //Maria
+  var tester2Dimension = facts2M.dimension(function(d){return d.testedBy}),
+      date2Dimension = facts2M.dimension(function(d){        
+        return d.executionDate;
+      }),
+      status2Dimension = facts2M.dimension(function(d){return d.status}),
+      three2Dimension  = facts2M.dimension(function (d){ 
+        return [d.testedBy, d.executionDate, d.status];
+      });
+
+  //Julia
+  var tester2JDimension = facts2J.dimension(function(d){return d.testedBy}),
+      date2JDimension = facts2J.dimension(function(d){return d.executionDate}),
+      status2JDimension = facts2J.dimension(function(d){return d.status}),
+      three2JDimension  = facts2M.dimension(function (d){ 
+        return [d.testedBy, d.executionDate, d.status];
+      });
+
+  var maria2Group = date2Dimension.group();
+  var julia2Group = date2JDimension.group();
+
+
+  //-----------------------------------------------------------------------------
+
+  tester2Dimension.filterExact("Maria");
+  status2Dimension.filterExact("failed");
+  tester2JDimension.filterExact("Julia");
+  status2JDimension.filterExact("failed");
 
   timeChartFailed.width(800)
      .height(400)
      .margins({top: 50, right: 50, bottom: 25, left: 40})
-     .dimension(dateDimension, dateJDimension)
+     .dimension(date2Dimension, date2JDimension)
      .x(d3.time.scale().domain([new Date(2017,10,25,21,0,0), new Date(2017,10,29,21,0,0)]))
      .xUnits(d3.time.days)
      .renderHorizontalGridLines(true)
@@ -86,10 +120,10 @@ d3.json("data/data.json", function (error, data) {
      .brushOn(true)    
      .compose([
         dc.lineChart(timeChartFailed)
-                  .group(mariaGroup, 'Maria')
+                  .group(maria2Group, 'Maria')
                   .ordinalColors(['steelblue']),
         dc.lineChart(timeChartFailed)
-                  .group(juliaGroup, 'Julia')
+                  .group(julia2Group, 'Julia')
                   .ordinalColors(['darkorange'])]);
 
   //dc.renderAll();

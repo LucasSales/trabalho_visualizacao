@@ -1,4 +1,4 @@
-var errosChart    = dc.pieChart("#pacotesProblematicosErros");
+var errosChart    = dc.pieChart("#pieChart");
 d3.json("data/dataP.json", function (error, data) {
 	
 	var t = 0;

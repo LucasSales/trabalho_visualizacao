@@ -4,13 +4,14 @@ var packagesChart = dc.rowChart("#pacotesProblematicos");
 var errosChart    = dc.pieChart("#pacotesProblematicosErros");
 var falhasChart   = dc.pieChart("#pacotesProblematicosFalhas");
 
-d3.json("data/ProjectZ.json", function (error, data) {
+d3.json("data/ProjectZV.json", function (error, data) {
 
-  data.packages.forEach(function(x) {
-          x.tests = +x.tests;
-  });
-  
-  var facts = crossfilter(data.packages);
+  // data.forEach(function(x) {
+  //         x.tests = +x.tests;
+  //
+  // });
+  console.log(data);
+  var facts = crossfilter(data.automatic);
 
   var packageDimension = facts.dimension(function(d){return d.name}),
       testDimension  = facts.dimension(function(d){return d.tests}),
@@ -41,7 +42,7 @@ d3.json("data/ProjectZ.json", function (error, data) {
   packagesChart
         .width(450).height(200)
         .dimension(packageDimension)
-        .group(testPerName)  
+        .group(testPerName)
         .colors(d3.scale.category10())
         .elasticX(true);
 
@@ -57,7 +58,7 @@ d3.json("data/ProjectZ.json", function (error, data) {
           .drawPaths(true)
           .dimension(errorDimension)
           .group(errorPerTest)
-          .legend(dc.legend())          
+          .legend(dc.legend())
           .on('pretransition', function(chart) {
             chart.selectAll('text.pie-slice').text(function(d) {
             return dc.utils.printSingleValue(d.data.value) + ' errors'
@@ -71,7 +72,7 @@ d3.json("data/ProjectZ.json", function (error, data) {
           .slicesCap(4)
           .innerRadius(100)
           .externalLabels(30)
-          .externalRadiusPadding(50)          
+          .externalRadiusPadding(50)
           .drawPaths(true)
           .legend(dc.legend())
           .dimension(failDimension)

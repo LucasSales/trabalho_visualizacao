@@ -12,7 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/nodeChart.css" rel="stylesheet">
-    
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="css/dc.css">
     <script src="js/crossfilter.js" charset="utf-8"></script>
@@ -45,7 +45,7 @@
               </li>
             </ul>
           </nav>
-          
+
 
         </header>
         <main role="main">
@@ -55,14 +55,14 @@
             <div class="container">
               <h1 class="display-3">Nome do Trabalho!</h1>
               <p>Explicação do trabalho.</p>
-            
+
             </div>
           </div>
 
-          
+
             <!-- Example row of columns -->
           <!-- Vis 1 -->
-          <div class="row justify-content-center">  
+          <div class="row justify-content-center">
             <div class="col-9">
               <h1 class="text-center">Tempo de execução Auto X Manual</h1>
               <div id="bar-chart-p1"></div>
@@ -71,91 +71,116 @@
           </div>
 
           <!-- Vis 2 -->
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
-              
+
             </div>
             <div class="col" >
               <h1 class="text-center">Manual vs Automação</h1>
               <div id="line-chart"></div>
             </div>
             <div class="col" >
-              
+
             </div>
           </div>
 
           <!-- Vis 3 -->
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
-              
+
             </div>
             <div class="col" >
               <h1 class="text-center">Qual o "manual tester" que mais realizou testes manuais em um período temporal específico?</h1>
               <div id="manualTester"></div>
-              
-            </div>             
+
+            </div>
 
             <div class="col" >
-              
+
             </div>
           </div>
-           
+
            <!-- Vis 4 -->
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
-              
+
             </div>
             </div>
             <div class="col" >
               <h1 class="text-center">Qual a produtividade de um "manual tester" em relação à detecção de falhas durante um período temporal específico?</h1>
               <div id="manualTesterFailed"></div>
-              
-            </div>          
+
+            </div>
 
             <div class="col" >
-              
+
             </div>
           </div>
 
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
               <h1 class="text-center">Pacotes problemáticos</h1>
               <h1 class="text-center">Total de testes</h1>
               <div id="pacotesProblematicos"></div>
             </div>
-            
+
           </div>
 
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
               <h1 class="text-center">Proporção de erros</h1>
               <div id="pacotesProblematicosErros"></div>
             </div>
-            
+
           </div>
 
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
               <h1 class="text-center">Proporção de falhas</h1>
               <div id="pacotesProblematicosFalhas"></div>
             </div>
-            
+
           </div>
 
-          <div class="row align-items-start">  
+          <div class="row align-items-start">
             <div class="col" >
-              
+
             </div>
             <div class="col" >
               <h1 class="text-center">Node chart</h1>
               <svg width="800" height="600"></svg>
             </div>
             <div class="col" >
-              
+
             </div>
           </div>
 
-          </div> 
+
+          <div class="row align-items-start">
+            <div class="col" >
+              <h1 class="text-center">Pacotes problemáticos Manual</h1>
+              <h1 class="text-center">Total de testes</h1>
+              <div id="pacotesProblematicosManual"></div>
+            </div>
+          </div>
+
+          <div class="row align-items-start">
+            <div class="col" >
+              <h1 class="text-center">Proporção de erros Manual</h1>
+              <div id="pacotesProblematicosErrosManual"></div>
+            </div>
+
+          </div>
+
+          <div class="row align-items-start">
+            <div class="col" >
+              <h1 class="text-center">Proporção de falhas Manual</h1>
+              <div id="pacotesProblematicosFalhasManual"></div>
+            </div>
+
+          </div>
+
+          </div>
         </main>
       </div><!-- /container -->
 
@@ -170,8 +195,9 @@
    <!-- <script type="text/javascript" src="js/scriptTest.js"></script>!-->
    <!-- <script type="text/javascript" src="js/scriptLineChart.js"></script>-->
     <!--<script type="text/javascript" src="js/manualtester.js"></script>!-->
-    
+
     <script type="text/javascript" src="js/problematicpackage.js"></script>
+    <script type="text/javascript" src="js/manualCharts.js"></script>
     <!-- <script type="text/javascript" src="js/scriptTest.js"></script> -->
     <!-- <script type="text/javascript" src = "js/nodeChart.js"></script> -->
   </body>

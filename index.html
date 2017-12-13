@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Template</title>
+    <title>Visualização</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +21,24 @@
     <!-- Custom CSS -->
     <link href="css/stylish-portfolio.min.css" rel="stylesheet">
 
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/dc.css">
+    <script src="js/crossfilter.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <script src="js/dc.js" charset="utf-8"></script>
+    <script src="https://d3js.org/colorbrewer.v1.min.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+      integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+      crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+      integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+      crossorigin=""></script>
+
   </head>
 
   <body id="page-top">
@@ -28,25 +46,22 @@
     <a class="menu-toggle rounded" href="#">
       <i class="fa fa-bars"></i>
     </a>
-    <nav id="sidebar-wrapper">
+    <nav id="sidebar-wrapper" >
       <ul class="sidebar-nav">
         <li class="sidebar-brand">
-          <a class="js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+          <a class="js-scroll-trigger" href="#page-top">Bem Vindo!</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#page-top">Home</a>
+          <a class="js-scroll-trigger" href="#page-top">Início</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#about">About</a>
+          <a class="js-scroll-trigger" href="#ES">Engenharia de Software</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#services">Services</a>
+          <a class="js-scroll-trigger" href="#fabrica">Fábrica de Teste</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#contact">Contact</a>
+          <a class="js-scroll-trigger" href="#portfolio">Visualizações</a>
         </li>
       </ul>
     </nav>
@@ -56,29 +71,124 @@
       <div class="container text-center my-auto">
         <h1 class="mb-1">Fábrica de Teste</h1>
         <h3 class="mb-5">
-          <em>A Free Bootstrap Theme by Start Bootstrap</em>
+          <em>Uma visualização da execução dos testes na Fábrica de testes do GREat</em>
         </h3>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+        <a class="btn bg-primary btn-xl js-scroll-trigger text-white" href="#ES">Visão Geral</a>
       </div>
       <div class="overlay"></div>
     </header>
 
-    <!-- About -->
-    <section class="content-section bg-light" id="about">
+
+    <section class="content-section bg-light" id="ES">
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-10 mx-auto">
-            <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-            <p class="lead mb-5">This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
-              <a href="https://unsplash.com/">Unsplash</a>!</p>
-            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What We Offer</a>
+            <h1>Engenharia de Software</h2>
+            <p class="lead mb-5">"Software engineering is concerned with theories, methods and tools for professional software development".</p>
+            <h4>Why do software projects fail?</h3>
+            <br>
+            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#fabrica">Fábrica</a>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About -->
+    <!-- content-section bg-light -->
+    <section class="content-section bg-primary text-white text-center" id="fabrica">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h2>Fábrica de Teste</h2>
+            <p class="lead mb-5">Fábrica de Testes (FT) é uma estrutura independente  que fornece serviços de teste de software para empresas desenvolvedoras de software. Ao demandar os serviços de uma FT, uma empresa pode se beneficiar de testes com alta qualidade e baixo custo, uma vez que não precisaria manter sua própria equipe de testes. Por atender vários clientes, uma FT deve organizar bem suas atividades, sendo comum o uso de sistemas de gerenciamento, como o JIRA, para acompanhamento dos processos. Essa ferramenta gera grande volume de dados que podem ser usados para análise da produtividade, porém dados brutos raramente são suficientes para tal.</p>
+            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#portfolio">Visualizações</a>
           </div>
         </div>
       </div>
     </section>
 
+
+     <!-- Portfolio -->
+    <section class="content-section" id="portfolio">
+      <div class="container">
+        <div class="content-section-heading text-center">
+          <h3 class="text-secondary mb-0">Fábrica de Teste</h3>
+          <h2 class="mb-5">Visualizações</h2>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <h2 style="color:black">Tempo de Execução</h2>
+            <a class="portfolio-item" href="#vis1">
+              <span class="caption">
+                <span class="caption-content">
+                  <!-- <h2 style="color:black">Tempo de Execução</h2>
+                  <p class="mb-0" style="color:black">Descrição</p> -->
+                </span>
+              </span>
+              <img class="img-fluid" src="img/v2.png" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <h2 style="color:black">Cobertura dos testes</h2>
+            <a class="portfolio-item" href="#vis2">
+              <span class="caption">
+                <span class="caption-content">
+                  <!-- <h2 style="color:black">Segunda visualização</h2>
+                  <p class="mb-0" style="color:black">descrição</p> -->
+                </span>
+              </span>
+              <img class="img-fluid" src="img/v4.PNG" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <h2 style="color:black">Desempenho testadores</h2>
+            <a class="portfolio-item" href="#vis3">
+              <span class="caption">
+                <span class="caption-content">
+                 <!--  <h2 style="color:black">Desempenho testadores</h2>
+                  <p style="color:black" class="mb-0">Descrição</p> -->
+                </span>
+              </span>
+              <img class="img-fluid" src="img/v5.PNG" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <h2 style="color:black" >Qualidade do Código</h2>
+            <a class="portfolio-item" href="node.html">
+              <span class="caption">
+                <span class="caption-content">
+                  <!-- <h2 style="color:black" >Qualidade do Código</h2>
+                  <p style="color:black" class="mb-0">Descrição</p> -->
+                </span>
+              </span>
+              <img class="img-fluid" src="img/v6.jpg" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Services -->
-    <section class="content-section bg-primary text-white text-center" id="services">
+<!--     <section class="content-section bg-light" id="services">
       <div class="container">
         <div class="content-section-heading">
           <h3 class="text-secondary mb-0">Services</h3>
@@ -125,96 +235,130 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Callout -->
-    <section class="callout">
+    <section class="content-section" id="vis1">
       <div class="container text-center">
-        <h2 class="mx-auto mb-5">Welcome to
+        <div class="row">
+
+          <div class="col-lg-12" id="bar-chart-p1">
+            <h2 >Tempo de execução automático x manual</h2>
+          </div>
+          <div class="col-lg-12" id="bar-chart-p2">
+            <h2 >Tempo de execução dos testes por pacote</h2>
+          </div>
+
+        </div>
+        <!-- <h2 class="mx-auto mb-5">Welcome to
           <em>your</em>
           next website!</h2>
-        <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/template-overviews/stylish-portfolio/">Download Now!</a>
+        <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/template-overviews/stylish-portfolio/">Download Now!</a> -->
+      </div>
+    </section>
+    
+    <section class="content-section" id="vis2">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-6" id="pieChartAuto">
+            <h2>Resultados - Testes Automáticos</h2>
+            <br>
+          </div>
+          <div class="col-lg-6" id="pieChartManual">
+            <h2>Resultados - Testes Automáticos</h2>
+            <br>
+          </div>
+
+          <div class="col-lg-12" id="pacotesProblematicos">
+            <br>
+            <br>
+            <br>
+            <h2>Quantidade de casos de teste por pacote</h2>
+            <br>
+          </div>
+          <div class="col-lg-6" id="pacotesProblematicosErros">
+            <h2>Erros - Testes Automático</h2>
+            <br>
+          </div>
+          <div class="col-lg-6" id="pacotesProblematicosFalhas">
+            <h2>Falhas - Testes Automático</h2>
+            <br>
+          </div>
+
+
+          <div class="col-lg-12" id="pacotesProblematicosManual">
+            <br>
+            <br>
+            <br>
+            <h2>Quantidade de casos de teste por pacote</h2>
+            <br>
+          </div>
+          <div class="col-lg-12" id="pacotesProblematicosFalhasManual">
+            <br>
+            <h2>Falhas - Testes Manuais</h2>
+            <br>
+          </div>
+          <div class="col-lg-12" id="scatterplot">
+            <h2>Número de falhas/Casos de teste</h2>
+            <br>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <!-- Portfolio -->
-    <section class="content-section" id="portfolio">
-      <div class="container">
-        <div class="content-section-heading text-center">
-          <h3 class="text-secondary mb-0">Portfolio</h3>
-          <h2 class="mb-5">Recent Projects</h2>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-6">
-            <a class="portfolio-item" href="#">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>Stationary</h2>
-                  <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
-                </span>
-              </span>
-              <img class="img-fluid" src="img/portfolio-1.jpg" alt="">
-            </a>
+    <section class="content-section" id="vis3">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-12" id="manualTester">
+            <h2>Quantidade de teste por dia</h2>
+            <br>
           </div>
-          <div class="col-lg-6">
-            <a class="portfolio-item" href="#">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>Ice Cream</h2>
-                  <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
-                </span>
-              </span>
-              <img class="img-fluid" src="img/portfolio-2.jpg" alt="">
-            </a>
+          <div class="col-lg-12" id="manualTesterFailed">
+            <h2>Quantidade de Falhas</h2>
+            <br>
           </div>
-          <div class="col-lg-6">
-            <a class="portfolio-item" href="#">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>Strawberries</h2>
-                  <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
-                </span>
-              </span>
-              <img class="img-fluid" src="img/portfolio-3.jpg" alt="">
-            </a>
+          <div class="col-lg-12" id="manualTesterFailed">
+            <h2>Produtividade dos testadores</h2>
           </div>
-          <div class="col-lg-6">
-            <a class="portfolio-item" href="#">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>Workspace</h2>
-                  <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-                </span>
-              </span>
-              <img class="img-fluid" src="img/portfolio-4.jpg" alt="">
-            </a>
+          <div class="col-lg-6 parcoords" id="parallelchart" 
+              style="height:400px">
+            <br>
           </div>
+          <div class="col-lg-12" id="manualTesterFailed">
+            <br>
+            <br>
+            <br>
+            <a href="node.html" class="btn btn-xl btn-dark">Visualizar acoplamento</a>
+          </div>
+          
         </div>
       </div>
     </section>
+   
 
     <!-- Call to Action -->
     <section class="content-section bg-primary text-white">
       <div class="container text-center">
-        <h2 class="mb-4">The buttons below are impossible to resist...</h2>
-        <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
-        <a href="#" class="btn btn-xl btn-dark">Look at Me!</a>
+        <h2 class="mb-4">Obrigado</h2>
+<!--         <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
+        <a href="#" class="btn btn-xl btn-dark">Look at Me!</a> -->
       </div>
     </section>
 
     <!-- Map -->
-    <section id="contact" class="map">
+<!--     <section id="contact" class="map">
       <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
       <br/>
       <small>
         <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
       </small>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer class="footer text-center">
       <div class="container">
-        <ul class="list-inline mb-5">
+<!--         <ul class="list-inline mb-5">
           <li class="list-inline-item">
             <a class="social-link rounded-circle text-white mr-3" href="#">
               <i class="icon-social-facebook"></i>
@@ -230,8 +374,8 @@
               <i class="icon-social-github"></i>
             </a>
           </li>
-        </ul>
-        <p class="text-muted small mb-0">Copyright &copy; Your Website 2017</p>
+        </ul> -->
+        <p class="text-muted small mb-0">Copyright &copy; Cayk Lima Barreto, Lucas Sales, Nécio Veras 2017.2</p>
       </div>
     </footer>
 
@@ -250,6 +394,13 @@
     <!-- Custom scripts for this template -->
     <script src="js/stylish-portfolio.min.js"></script>
 
+    <script type="text/javascript" src="js/scriptTest.js"></script>
+    <script type="text/javascript" src="js/pieChart.js"></script>
+    <script type="text/javascript" src="js/problematicpackage.js"></script>
+    <script type="text/javascript" src="js/manualtester.js"></script>
+    <script type="text/javascript" src="js/d3.parcoords.js"></script>
+    <link   rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
+    <script type="text/javascript" src="js/parallelchart.js"></script>
   </body>
 
 </html>

@@ -44,7 +44,7 @@ d3.json("data/dataP.json", function(error, data){
 
 
   barChartP1.width(400)
-           .height(400)
+           .height(300)
            .margins({top: 30, right: 50, bottom: 35, left: 40})
            .dimension(typeDim)
            .x(d3.scale.ordinal())
@@ -64,7 +64,7 @@ d3.json("data/dataP.json", function(error, data){
                        return "negative";});
         
   barChartP2.width(1200)
-           .height(400)
+           .height(300)
            .margins({top: 30, right: 50, bottom: 35, left: 40})
            .dimension(packageDim)
            .x(d3.scale.ordinal()

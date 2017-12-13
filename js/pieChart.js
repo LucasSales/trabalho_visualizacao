@@ -1,4 +1,5 @@
-var errosChart    = dc.pieChart("#pieChart");
+var errosChartAuto    = dc.pieChart("#pieChartAuto");
+var errosChartManual    = dc.pieChart("#pieChartManual");
 d3.json("data/dataP.json", function (error, data) {
 	
 	var t = 0;
@@ -53,11 +54,20 @@ d3.json("data/dataP.json", function (error, data) {
 	var facts = crossfilter(array);
 	var factsM = crossfilter(arrayM);
 
-	var dim = facts.dimension(function(d){
+	var dimAuto = facts.dimension(function(d){
           return d.type;
   	});
 
-	var total = dim.group().reduceSum(function(d){
+	var totalAuto = dimAuto.group().reduceSum(function(d){
+    	return d.value;
+		
+	});
+
+	var dimManual = factsM.dimension(function(d){
+          return d.type;
+  	});
+
+	var totalManual = dimManual.group().reduceSum(function(d){
     	return d.value;
 		
 	});
@@ -98,13 +108,13 @@ d3.json("data/dataP.json", function (error, data) {
 	//     }
  //  	});
 
-	errosChart
-    .width(768)
+	errosChartAuto
+    .width(600)
     .height(480)
     .slicesCap(4)
     .innerRadius(100)
-    .dimension(dim)
-    .group(total)
+    .dimension(dimAuto)
+    .group(totalAuto)
     .legend(dc.legend())
     // workaround for #703: not enough data is accessible through .label() to display percentages
     .on('pretransition', function(chart) {
@@ -112,5 +122,21 @@ d3.json("data/dataP.json", function (error, data) {
             return d.data.key + ' ' + dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%';
         })
     });
-  errosChart.render();
+  errosChartAuto.render();
+
+  	errosChartManual
+    .width(600)
+    .height(480)
+    .slicesCap(4)
+    .innerRadius(100)
+    .dimension(dimManual)
+    .group(totalManual)
+    .legend(dc.legend())
+    // workaround for #703: not enough data is accessible through .label() to display percentages
+    .on('pretransition', function(chart) {
+        chart.selectAll('text.pie-slice').text(function(d) {
+            return d.data.key + ' ' + dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%';
+        })
+    });
+  errosChartManual.render();
 });

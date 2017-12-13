@@ -28,7 +28,7 @@ d3.json('data/dataP.json', function(data) {
     }
   });
 
-  pc1 = d3.parcoords()("#parallelchart")
+pc1 = d3.parcoords()("#parallelchart")
     .data(array)
     //.hideAxis(["name"])
     .composite("darken")
